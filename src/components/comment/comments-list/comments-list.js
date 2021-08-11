@@ -1,8 +1,43 @@
-import React, { Component } from 'react';
+import React, { Component, useEffect, useState } from 'react';
+import { fetchComments } from '../../../redux/comments/api';
 import SocialapiService from '../../services/social-service';
 import Spinner from '../spinner/spinner';
 
 import './comments-list.css';
+
+
+// ============hooks
+
+const CommentsList = () => {
+  const [commentsList] = useState([]);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchComments());
+  }, []);
+
+
+  const renderItems = (arr) => {
+    return arr.map(({id, name, body, email}) => {
+      return (
+        <div className="comments-list comments-group">
+          <div className="list-group-item"
+              key={id}>
+            <p className='comments-list title'>{name}</p> {id}
+            <p>{body}</p>
+            <p className='comments-list email'>{email}</p>
+          </div>
+        </div>
+      );
+    });
+  };
+}
+
+
+export { CommentsList };
+//==============hooks
+
+
 
 export default class CommentsList extends Component {
 

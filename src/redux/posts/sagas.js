@@ -1,16 +1,12 @@
 import { takeEvery, put, call } from '@redux-saga/core/effects';
 import { GET_POSTS } from './types';
-import {getPosts, getPostsSuccess, getPostsError} from './actions'
+import { getPostsSuccess, getPostsError} from './actions';
+import {fetchPosts} from './api';
 
 
-
-export function* watchSagas() {
-   yield takeEvery(GET_POSTS, getPostsSaga)
-}
-
-function* getPostsSaga() {
+function* getPostsSaga(action) {
     try {
-        const posts = yield call(getPosts);
+        const posts = yield call(() => fetchPosts(action.payload));
              
         yield put(getPostsSuccess(posts));  
     } catch (error) { 
@@ -18,9 +14,8 @@ function* getPostsSaga() {
     }    
 }
 
+export function* postsSaga() {
+    yield takeEvery(GET_POSTS, getPostsSaga)
+ }
 
 
-// async function fetchPosts() {
-//     const response = await fetch('https://jsonplaceholder.typicode.com/posts?_limit=5')
-//     return await response.json()
-// }

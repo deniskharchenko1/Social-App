@@ -10,7 +10,8 @@ export const commentsReducer = (state = initialState, action) => {
     switch(action.type) {
         case GET_COMMENTS:
             return {...state, 
-                isLoading: true}
+                isLoading: true
+            }
 
         case GET_COMMENTS_SUCCESS:
             return {...state,

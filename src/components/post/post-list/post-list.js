@@ -1,8 +1,44 @@
-import React, { Component, useState } from 'react';
-import SocialapiService from '../../services/social-service';
-import Spinner from '../spinner/spinner';
+import React, { Component, useState, useEffect } from 'react';
+import { fetchPosts } from '../../../redux/posts/api';
+import SocialapiService from '../../../services/social-service';
+import Spinner from '../../spinner/spinner';
 
 import './post-list.css';
+
+
+//=============hooks
+
+const PostList = () => {
+  const [postsList] = useState([]);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchPosts());
+  }, []);
+
+  const renderItems = (arr) => {
+    return arr.map(({id, title, userId, body}) => {
+      return (
+        <div className="list-group-item"
+            key={id}
+            onClick={() => this.props.onPostSelected(id)}>
+          <p className='post-list title'>{title}</p> {id}
+          <p>{body}</p>
+        </div>
+      );
+    });
+  }
+
+
+}
+
+
+export { PostList };
+
+//=============hooks
+
+
+
 
 
 export default class PostList extends Component {
@@ -43,7 +79,6 @@ export default class PostList extends Component {
             onClick={() => this.props.onPostSelected(id)}>
           <p className='post-list title'>{title}</p> {id}
           <p>{body}</p>
-
         </div>
       );
     });

@@ -1,8 +1,7 @@
 import React, {Component} from 'react';
 import Header from '../header';
-import {ItemList, ItemListFunc} from '../item-list';
+import { ItemListFunc} from '../item-list';
 import PersonDetails from '../person-details';
-import PostDetails from '../post-details';
 import PostList from '../post-list';
 import CommentsList from '../comments-list';
 
@@ -17,9 +16,6 @@ import createSagaMiddleware from 'redux-saga';
 import {watchSagas} from '../../redux/rootSagas';
 
 import './app.css';
-import FetchedPosts from "../fetchedPosts/fetchedPosts";
-import FetchedUsers from "../fetchedUsers/fetchedUsers";
-import FetchedComments from "../fetchedComments/fetchedComments";
 
 
 
@@ -31,12 +27,6 @@ const store = createStore(rootReducer, enhancer);
 sagaMiddleware.run(watchSagas);
 
 export default class App extends Component {
-
-
-  // state = {
-  //   selectedPerson: 1,
-  //   selectedPost: 1
-  // };
 
   onPersonSelected = (id) => {
     this.setState({
@@ -58,43 +48,20 @@ export default class App extends Component {
           <Header />
           <div className="row mb2">
             <div className="col-md-6">
-              <ItemList onItemSelected={this.onPersonSelected}/>
+              <ItemListFunc />
             </div>
-
-            <div className="col-md-6">
-              <ItemListFunc onItemSelected={this.onPersonSelected}/>
-            </div>
-
-            
 
             <div className="col-md-12">
-              <PersonDetails personId={this.state.selectedPerson}/>
-            </div>
-  
-            {/* <Route path='/people' component= {PersonDetails} exact/> */}
-  
-            <div className="col-md-6">
-              <PostList postId={this.state.selectedPerson}
-                        onPostSelected={this.onPostSelected}/>
+              <PersonDetails />
             </div>
 
             <div className="col-md-6">
-              <PostDetails postId={this.state.selectedPost}/>
-              <CommentsList postId={this.state.selectedPost}/>
+              <PostList />
             </div>
 
-            <div className="col-md-6 mb-4">
-              <FetchedPosts/>
+            <div className="col-md-6">
+              <CommentsList />
             </div>
-
-            <div className="col-md-6 mb-4">
-              <FetchedUsers/>
-            </div>
-
-            <div className="col-md-6 mb-4">
-              <FetchedComments/>
-            </div>
-            
 
           </div>
         </div>

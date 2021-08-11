@@ -5,9 +5,10 @@ import { GET_COMMENTS,
 
 
 
-export const getComments = () => {
+export const getComments = (postId) => {
   return {
-      type: GET_COMMENTS
+      type: GET_COMMENTS,
+      payload: postId
   }
 }
 

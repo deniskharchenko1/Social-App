@@ -10,7 +10,8 @@ export const postsReducer = (state = initialState, action) => {
     switch(action.type) {
         case GET_POSTS:
             return {...state, 
-                isLoading: true}
+                isLoading: true
+            }
         case GET_POSTS_SUCCESS:
             return {...state, 
                 isLoading: false,

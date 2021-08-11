@@ -1,16 +1,13 @@
 import { takeEvery, put, call } from '@redux-saga/core/effects';
 import {GET_COMMENTS} from './types';
-import {getComments, getCommentsSuccess, getCommentsError} from './actions'
+import {getCommentsSuccess, getCommentsError} from './actions'
+import {fetchComments} from './api';
 
 
-export function* watchSagas() {
-   yield takeEvery(GET_COMMENTS, getCommentsSaga)
-}
 
-
-function* getCommentsSaga() {
+function* getCommentsSaga(action) {
     try {
-        const comments = yield call(getComments)
+        const comments = yield call(() => fetchComments(action.payload))
         yield put(getCommentsSuccess(comments))
         
     } catch (error) {
@@ -19,7 +16,8 @@ function* getCommentsSaga() {
 }
 
 
-// async function fetchComments() {
-//     const response = await fetch('https://jsonplaceholder.typicode.com/comments?_limit=5')
-//     return await response.json()
-// }
+export function* commentsSaga() {
+    yield takeEvery(GET_COMMENTS, getCommentsSaga)
+ }
+ 
+

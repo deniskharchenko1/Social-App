@@ -5,9 +5,10 @@ import { GET_POSTS,
 
 
 
-export const getPosts = () => {
+export const getPosts = (userId) => {
     return {
-        type: GET_POSTS
+        type: GET_POSTS,
+        payload: userId
     }
 }
 

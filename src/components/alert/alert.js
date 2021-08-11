@@ -1,7 +1,7 @@
 import React from 'react'
 
-export const Alert = ({ text }) => (
+export const Alert = () => (
   <div className="alert alert-warning" role="alert">
-    {text}
+    Что-то пошло не так
   </div>
 )
