@@ -29,6 +29,12 @@ const PostList = () => {
     });
   }
 
+  return (
+    <div className="post-list post-group">
+      {renderItems(postsList)}
+    </div>
+  );
+
 
 }
 

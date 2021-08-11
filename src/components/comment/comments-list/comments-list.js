@@ -20,17 +20,22 @@ const CommentsList = () => {
   const renderItems = (arr) => {
     return arr.map(({id, name, body, email}) => {
       return (
-        <div className="comments-list comments-group">
           <div className="list-group-item"
               key={id}>
             <p className='comments-list title'>{name}</p> {id}
             <p>{body}</p>
             <p className='comments-list email'>{email}</p>
           </div>
-        </div>
       );
     });
   };
+
+  return (
+        
+    <div className="comments-list comments-group">
+      {renderItems(commentsList)}
+    </div>
+  );
 }
 
 
