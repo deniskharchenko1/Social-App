@@ -28,17 +28,7 @@ sagaMiddleware.run(watchSagas);
 
 export default class App extends Component {
 
-  onPersonSelected = (id) => {
-    this.setState({
-      selectedPerson: id,
-    });
-  };
-
-  onPostSelected = (postId) => {
-    this.setState({
-      selectedPost: postId
-    });
-  }
+  
 
   render() {
     return (

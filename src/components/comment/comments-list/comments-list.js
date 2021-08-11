@@ -13,7 +13,7 @@ const CommentsList = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchComments());
+    dispatch(fetchComments(postId));
   }, []);
 
 
