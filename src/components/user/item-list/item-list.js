@@ -5,8 +5,8 @@ import Spinner from "../../spinner/spinner";
 
 import "./item-list.css";
 import { useDispatch } from "react-redux";
-import {getUsers} from '../../../redux/users/actions';
-import {fetchUsers} from '../../../redux/users/api'
+
+import {fetchUsers, getPerson} from '../../../redux/users/api'
 
 const ItemListFunc = () => {
     const [peopleList] = useState([]);
@@ -14,7 +14,7 @@ const ItemListFunc = () => {
     
 
     useEffect(() => {
-      dispatch(getUsers());
+      dispatch(fetchUsers());
     }, []);
 
 
@@ -26,7 +26,7 @@ const ItemListFunc = () => {
           return (
             <li className="list-group-item"
               key={id}
-              onClick={() => dispatch(fetchUsers())}>
+              onClick={() => dispatch(getPerson())}>
               {name}
             </li>
           );
