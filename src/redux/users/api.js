@@ -7,6 +7,6 @@ export async function fetchUsers() {
 
 
 export async function getPerson(id) {
-    const users = await fetch(`/users/${id}/`);
-    return users; 
+    const user = await fetch(`https://jsonplaceholder.typicode.com/users/${id}`);
+    return await user.json(); 
 }

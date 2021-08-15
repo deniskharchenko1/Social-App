@@ -1,4 +1,5 @@
 import { GET_USERS,
+  GET_USER,
   GET_USERS_SUCCESS,
   GET_USERS_ERROR,
 } from './types'
@@ -8,6 +9,14 @@ import { GET_USERS,
 export const getUsers = () => {
   return {
       type: GET_USERS
+  }
+}
+
+
+export const getUser = (id) => {
+  return {
+      type: GET_USER,
+      payload: id
   }
 }
 

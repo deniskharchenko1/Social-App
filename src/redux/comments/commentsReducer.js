@@ -1,4 +1,4 @@
-import {GET_COMMENTS, GET_COMMENTS_SUCCESS, GET_COMMENTS_ERROR} from '../types';
+import {GET_COMMENTS, GET_COMMENTS_SUCCESS, GET_COMMENTS_ERROR} from './types';
 
 const initialState = {
     isLoading: false,

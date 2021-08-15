@@ -1,41 +1,40 @@
-import React, { Component, useState, useEffect } from 'react';
-import { fetchPosts } from '../../../redux/posts/api';
-import SocialapiService from '../../../services/social-service';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from "react-redux";
+
 import Spinner from '../../spinner/spinner';
 
 import './post-list.css';
+
+import { getPosts } from "../../../redux/posts/actions";
+
 
 
 //=============hooks
 
 const PostList = () => {
-  const [postsList] = useState([]);
+  const posts = useSelector(state => state.postsReducer.fetchedPosts);
+  const isLoading = useSelector(state => state.postsReducer.isLoading);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchPosts());
-  }, []);
+    dispatch(getPosts());
+  }, [dispatch]);
 
-  const renderItems = (arr) => {
-    return arr.map(({id, title, userId, body}) => {
-      return (
-        <div className="list-group-item"
-            key={id}
-            onClick={() => this.props.onPostSelected(id)}>
-          <p className='post-list title'>{title}</p> {id}
-          <p>{body}</p>
-        </div>
-      );
-    });
-  }
 
-  return (
+  return (isLoading) ? (
+    <Spinner/>
+  ) : (
     <div className="post-list post-group">
-      {renderItems(postsList)}
+      {posts.map(post => 
+      <div className="list-group-item"
+          key={post.id}>
+        <p className='post-list title'>{post.title}</p> {post.id}
+        <p>{post.body}</p>
+      </div>
+      )}
+      
     </div>
-  );
-
-
+  )
 }
 
 
@@ -45,70 +44,3 @@ export { PostList };
 
 
 
-
-
-export default class PostList extends Component {
-
-  socialapiService = new SocialapiService();
-
-  state = {
-    postList: null
-  };
-
-  componentDidMount() {
-    this.updatePosts();
-  }
-
-  componentDidUpdate(prevProps) {
-    if (this.props.postId !== prevProps.postId) {
-      this.updatePosts();
-    }
-  }
-
-  updatePosts() {
-    const {postId} = this.props;
-    if (!postId) {
-      return;
-    }
-
-    this.socialapiService.getPostsUserId(postId)
-    .then((postList) => {
-        this.setState({postList});
-      });
-  }
-
-  renderItems(arr) {
-    return arr.map(({id, title, userId, body}) => {
-      return (
-        <div className="list-group-item"
-            key={id}
-            onClick={() => this.props.onPostSelected(id)}>
-          <p className='post-list title'>{title}</p> {id}
-          <p>{body}</p>
-        </div>
-      );
-    });
-  }
-
-  render() {
-
-    const { postList } = this.state;
-
-    if (!postList) {
-      return <Spinner />;
-    }
-
-    const items = this.renderItems(postList);
-
-    return (
-      <>
-      <div>
-        POSTS
-      </div>
-      <div className="post-list post-group">
-        {items}
-      </div>
-      </>
-    );
-  }
-}

@@ -1,51 +1,48 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState, useSelector, useDispatch } from "react-redux";
+import {useEffect} from "react";
 import Spinner from "../../spinner/spinner";
 
 
 import "./item-list.css";
-import { useDispatch } from "react-redux";
 
-import {fetchUsers, getPerson} from '../../../redux/users/api'
+import { getUsers, getUser } from "../../../redux/users/actions";
+
 
 const ItemListFunc = () => {
-    const [peopleList] = useState([]);
+    const users = useSelector(state => state.usersReducer.fetchedUsers);
+    const isLoading = useSelector(state => state.usersReducer.isLoading);
     const dispatch = useDispatch();
     
 
     useEffect(() => {
-      dispatch(fetchUsers());
-    }, []);
+      dispatch(getUsers());
+    }, [dispatch]);
+
+    // const getUser = (id) => {
+    //   dispatch(getUser(id))
+    // }
 
 
-    const renderedItems = (peopleList) => {
-      return isLoading ? (
-        <Spinner />
-      ) : (
-        peopleList.map(({ id, name }) => {
-          return (
-            <li className="list-group-item"
-              key={id}
-              onClick={() => dispatch(getPerson())}>
-              {name}
-            </li>
-          );
-        })
-      );
-    };
-
-    return (
+    return (isLoading) ? (
+      <Spinner />
+    ) : (
       <ul className="item-list list-group">
-        {renderedItems(peopleList)}
-      </ul>
+        {users.map(user => 
+          <li className="list-group-item"
+            key={user.id}
+            onClick={() => dispatch(getUser())}
+            >
+            {user.name}
+          </li>
+          )
+        }
+      </ul> 
     );
 };
 
 
 export { ItemListFunc };
-
-
-
 
 
 

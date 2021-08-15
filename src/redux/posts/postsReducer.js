@@ -1,4 +1,4 @@
-import {GET_POSTS, GET_POSTS_SUCCESS, GET_POSTS_ERROR} from '../types';
+import {GET_POSTS, GET_POSTS_SUCCESS, GET_POSTS_ERROR} from './types';
 
 const initialState = {
     isLoading: false,

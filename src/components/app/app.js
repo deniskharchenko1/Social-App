@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
 import Header from '../header';
-import { ItemListFunc} from '../item-list';
-import PersonDetails from '../person-details';
-import PostList from '../post-list';
-import CommentsList from '../comments-list';
+import { ItemListFunc} from '../user/item-list';
+// import {PersonDetails} from '../user/person-details';
+import {PostList} from '../post/post-list';
+import {CommentsList} from '../comment/comments-list';
 
 
 
@@ -28,8 +28,6 @@ sagaMiddleware.run(watchSagas);
 
 export default class App extends Component {
 
-  
-
   render() {
     return (
       <Provider store={store}>
@@ -42,7 +40,7 @@ export default class App extends Component {
             </div>
 
             <div className="col-md-12">
-              <PersonDetails />
+              {/* <PersonDetails /> */}
             </div>
 
             <div className="col-md-6">
