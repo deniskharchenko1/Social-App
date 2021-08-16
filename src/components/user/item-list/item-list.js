@@ -19,10 +19,6 @@ const ItemListFunc = () => {
       dispatch(getUsers());
     }, [dispatch]);
 
-    // const getUser = (id) => {
-    //   dispatch(getUser(id))
-    // }
-
 
     return (isLoading) ? (
       <Spinner />
@@ -31,7 +27,7 @@ const ItemListFunc = () => {
         {users.map(user => 
           <li className="list-group-item"
             key={user.id}
-            onClick={() => dispatch(getUser())}
+            onClick={() => dispatch(getUser(user.id))}
             >
             {user.name}
           </li>

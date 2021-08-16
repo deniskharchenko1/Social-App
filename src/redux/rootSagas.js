@@ -1,5 +1,6 @@
 import { all } from '@redux-saga/core/effects';
-import {usersSaga, userSaga} from './users/sagas';
+import {usersSaga} from './users/sagas';
+import {userSaga} from './users/sagas';
 import {postsSaga} from './posts/sagas';
 import {commentsSaga} from './comments/sagas';
 

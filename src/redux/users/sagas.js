@@ -1,6 +1,6 @@
 import { takeEvery, put, call } from '@redux-saga/core/effects';
 import { GET_USERS, GET_USER } from './types';
-import { getUsersSuccess, getUsersError} from './actions'
+import { getUsersSuccess, getUsersError, getUserSuccess, getUserError} from './actions'
 import {fetchUsers, getPerson} from './api'
 
 
@@ -19,12 +19,11 @@ function* getUserSaga(action) {
     try {
         const user = yield call (() => getPerson(action.payload));
 
-        yield put(getUsersSuccess(user)); 
+        yield put(getUserSuccess(user)); 
     } catch (error) {
-        yield put(getUsersError())  
+        yield put(getUserError())  
     }    
 }
-
 
 export function* usersSaga() {
     yield takeEvery(GET_USERS, getUsersSaga)
@@ -34,6 +33,12 @@ export function* userSaga() {
     yield takeEvery(GET_USER, getUserSaga)
 }
 
+
+// export const usersSaga = [
+//     takeEvery(GET_USERS, getUsersSaga),
+//     takeEvery(GET_USER, getUserSaga)
+// ]
+    
 
 
 

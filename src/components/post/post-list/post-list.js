@@ -14,11 +14,19 @@ import { getPosts } from "../../../redux/posts/actions";
 const PostList = () => {
   const posts = useSelector(state => state.postsReducer.fetchedPosts);
   const isLoading = useSelector(state => state.postsReducer.isLoading);
+  const currentUser = useSelector(state => state.usersReducer.currentUser);
+
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getPosts());
-  }, [dispatch]);
+    if (currentUser) {
+      dispatch(getPosts(currentUser.id));
+    } else {
+      return (
+        <div>Выберите пользователя для отображения постов</div>
+      )
+    }
+  }, [dispatch, currentUser]);
 
 
   return (isLoading) ? (
@@ -27,12 +35,13 @@ const PostList = () => {
     <div className="post-list post-group">
       {posts.map(post => 
       <div className="list-group-item"
-          key={post.id}>
+          key={post.id}
+          // onClick={() => dispatch(setCurrentPostId(post.id))}
+          >
         <p className='post-list title'>{post.title}</p> {post.id}
         <p>{post.body}</p>
       </div>
-      )}
-      
+      )}   
     </div>
   )
 }

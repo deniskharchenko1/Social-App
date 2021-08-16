@@ -4,12 +4,19 @@ import { useSelector, useDispatch } from "react-redux";
 
 import './person-details.css';
 
+import { getUser } from "../../../redux/users/actions";
 
 
 // ==============hooks
 
 const PersonDetails = () => {
-  const user = useSelector(state => state.usersReducer.fetchedUsers);
+  const user = useSelector(state => state.usersReducer.currentUser);
+  const dispatch = useDispatch();
+
+
+  useEffect(() => {
+    dispatch(getUser(user.id));
+  }, [dispatch, user]);
   
   
   return (

@@ -1,7 +1,10 @@
 import { GET_USERS,
-  GET_USER,
   GET_USERS_SUCCESS,
   GET_USERS_ERROR,
+
+  GET_USER,
+  GET_USER_SUCCESS,
+  GET_USER_ERROR,
 } from './types'
 
 
@@ -12,13 +15,6 @@ export const getUsers = () => {
   }
 }
 
-
-export const getUser = (id) => {
-  return {
-      type: GET_USER,
-      payload: id
-  }
-}
 
 export const getUsersSuccess = (data) => {
   return {
@@ -35,3 +31,25 @@ export const getUsersError = (error) => {
 }
 
 
+
+
+export const getUser = (id) => {
+  return {
+      type: GET_USER,
+      payload: id
+  }
+}
+
+export const getUserSuccess = (data) => {
+  return {
+      type: GET_USER_SUCCESS,
+      payload: data
+  }
+}
+
+export const getUserError = (error) => {
+  return {
+      type: GET_USER_ERROR,
+      payload: error
+  }
+}

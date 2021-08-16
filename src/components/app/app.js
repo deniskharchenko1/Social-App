@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import Header from '../header';
 import { ItemListFunc} from '../user/item-list';
-// import {PersonDetails} from '../user/person-details';
+import {PersonDetails} from '../user/person-details';
 import {PostList} from '../post/post-list';
 import {CommentsList} from '../comment/comments-list';
 
@@ -40,7 +40,7 @@ export default class App extends Component {
             </div>
 
             <div className="col-md-12">
-              {/* <PersonDetails /> */}
+              <PersonDetails />
             </div>
 
             <div className="col-md-6">

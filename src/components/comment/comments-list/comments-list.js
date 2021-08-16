@@ -12,13 +12,14 @@ import { getComments } from "../../../redux/comments/actions";
 // ============hooks
 
 const CommentsList = () => {
-  const comments = useSelector(state => state.postsReducer.fetchedPosts);
-  const isLoading = useSelector(state => state.postsReducer.isLoading);
+  const comments = useSelector(state => state.commentsReducer.fetchedComments);
+  const isLoading = useSelector(state => state.commentsReducer.isLoading);
+  const currentPostId = useSelector(state => state);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getComments());
-  }, [dispatch]);
+    dispatch(getComments(currentPostId));
+  }, [dispatch, currentPostId]);
 
 
   return (isLoading) ? (
