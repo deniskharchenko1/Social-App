@@ -3,6 +3,8 @@ import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
 import './person-details.css';
+import Spinner from "../../spinner/spinner";
+
 
 import { getUser } from "../../../redux/users/actions";
 
@@ -11,15 +13,21 @@ import { getUser } from "../../../redux/users/actions";
 
 const PersonDetails = () => {
   const user = useSelector(state => state.usersReducer.currentUser);
+  const isLoading = useSelector(state => state.usersReducer.isLoading);
+
   const dispatch = useDispatch();
 
 
   useEffect(() => {
-    dispatch(getUser(user.id));
+    dispatch(getUser());
   }, [dispatch, user]);
   
+
   
+    
+
   return (
+  
     <div className="person-details card">
       
       <img className="person-image"
@@ -44,6 +52,9 @@ const PersonDetails = () => {
       </div>
     </div>
   )
+  
+  
+  
 }
 
 export {PersonDetails};

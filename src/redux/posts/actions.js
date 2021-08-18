@@ -1,6 +1,7 @@
 import { GET_POSTS,
   GET_POSTS_SUCCESS,
-  GET_POSTS_ERROR
+  GET_POSTS_ERROR,
+  SET_POST
 } from './types'
 
 
@@ -23,6 +24,13 @@ export const getPostsError = (error) => {
   return {
       type: GET_POSTS_ERROR,
       payload: error
+  }
+}
+
+export const setCurrentPostId = (id) => {
+  return {
+      type: SET_POST,
+      payload: id
   }
 }
 

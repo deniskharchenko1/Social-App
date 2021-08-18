@@ -25,6 +25,8 @@ function* getUserSaga(action) {
     }    
 }
 
+
+
 export function* usersSaga() {
     yield takeEvery(GET_USERS, getUsersSaga)
 }

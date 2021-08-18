@@ -1,9 +1,10 @@
-import {GET_POSTS, GET_POSTS_SUCCESS, GET_POSTS_ERROR} from './types';
+import {GET_POSTS, GET_POSTS_SUCCESS, GET_POSTS_ERROR, SET_POST} from './types';
 
 const initialState = {
     isLoading: false,
     error: '',
-    fetchedPosts: [],   
+    fetchedPosts: [], 
+    currentPostId: null  
 }
 
 export const postsReducer = (state = initialState, action) => {
@@ -21,6 +22,11 @@ export const postsReducer = (state = initialState, action) => {
             return {...state, 
                 isLoading: false,
                 error: action.payload   
+            }
+        case SET_POST:
+            return {...state, 
+                isLoading: false,
+                currentPostId: action.payload    
             }
         default: return state
     }

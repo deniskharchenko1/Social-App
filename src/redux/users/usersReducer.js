@@ -4,7 +4,7 @@ const initialState = {
     isLoading: false,
     error: '',
     fetchedUsers: [],
-    currentUser: null
+    currentUser: 1
 }
 
 export const usersReducer = (state = initialState, action) => {

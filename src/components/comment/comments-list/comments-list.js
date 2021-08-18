@@ -14,7 +14,7 @@ import { getComments } from "../../../redux/comments/actions";
 const CommentsList = () => {
   const comments = useSelector(state => state.commentsReducer.fetchedComments);
   const isLoading = useSelector(state => state.commentsReducer.isLoading);
-  const currentPostId = useSelector(state => state);
+  const currentPostId = useSelector(state => state.postsReducer.currentPostId);
   const dispatch = useDispatch();
 
   useEffect(() => {

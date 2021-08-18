@@ -5,7 +5,7 @@ import Spinner from '../../spinner/spinner';
 
 import './post-list.css';
 
-import { getPosts } from "../../../redux/posts/actions";
+import { getPosts, setCurrentPostId } from "../../../redux/posts/actions";
 
 
 
@@ -15,6 +15,7 @@ const PostList = () => {
   const posts = useSelector(state => state.postsReducer.fetchedPosts);
   const isLoading = useSelector(state => state.postsReducer.isLoading);
   const currentUser = useSelector(state => state.usersReducer.currentUser);
+  const currentPostId = useSelector(state => state.postsReducer.currentPostId);
 
   const dispatch = useDispatch();
 
@@ -36,7 +37,7 @@ const PostList = () => {
       {posts.map(post => 
       <div className="list-group-item"
           key={post.id}
-          // onClick={() => dispatch(setCurrentPostId(post.id))}
+          onClick={() => dispatch(setCurrentPostId(currentPostId.id))}
           >
         <p className='post-list title'>{post.title}</p> {post.id}
         <p>{post.body}</p>

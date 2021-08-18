@@ -6,7 +6,7 @@ import {fetchPosts, getAllPosts} from './api';
 
 function* getPostsSaga(action) {
     try {
-        const posts = yield call(() => getAllPosts(action.payload));
+        const posts = yield call(() => fetchPosts(action.payload));
              
         yield put(getPostsSuccess(posts));  
     } catch (error) { 
