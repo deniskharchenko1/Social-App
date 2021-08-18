@@ -22,9 +22,9 @@ const PersonDetails = () => {
     dispatch(getUser());
   }, [dispatch, user]);
   
-
-  
-    
+  if (user == null ) {
+    return <div>Выберите пользователя</div>
+  }
 
   return (
   

@@ -19,19 +19,32 @@ const PostList = () => {
 
   const dispatch = useDispatch();
 
+
   useEffect(() => {
     if (currentUser) {
       dispatch(getPosts(currentUser.id));
-    } else {
-      return (
-        <div>Выберите пользователя для отображения постов</div>
-      )
-    }
+    } 
   }, [dispatch, currentUser]);
 
 
-  return (isLoading) ? (
-    <Spinner/>
+
+  // useEffect(() => {
+  //   if (currentUser) {
+  //     dispatch(getPosts(currentUser.id));
+  //   } else {
+  //     return (
+  //       <div>Выберите пользователя для отображения постов</div>
+  //     )
+  //   }
+  // }, [dispatch, currentUser]);
+
+  // if (currentUser == null ) {
+  //   return  <div>Выберите пользователя для отображения постов</div>
+  // } else 
+
+
+  return (currentUser == null ) ? (
+    <div>Выберите пользователя для отображения постов</div>
   ) : (
     <div className="post-list post-group">
       {posts.map(post => 
