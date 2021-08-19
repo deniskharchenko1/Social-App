@@ -8,6 +8,7 @@
   
   .item-list .list-group-item:hover {
     background-color: #444;
+    border-color: #444;
   }
 
 

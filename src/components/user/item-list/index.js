@@ -1,3 +1,3 @@
-import { ItemListFunc} from './item-list';
+import  ItemListFunc from './item-list';
 
 export { ItemListFunc};

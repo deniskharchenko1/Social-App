@@ -5,9 +5,7 @@ import {PersonDetails} from '../user/person-details';
 import {PostList} from '../post/post-list';
 import {CommentsList} from '../comment/comments-list';
 
-
-
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { rootReducer } from '../../redux/rootReducer';
 
@@ -32,27 +30,28 @@ export default class App extends Component {
     return (
       <Provider store={store}>
       <Router>
-        <div>
-          <Header />
-          <div className="row mb2">
-            <div className="col-md-6">
-              <ItemListFunc />
-            </div>
+        
+          <div>
+            <Header />
+            <div className="row mb2">
+            <Switch>
+              <Route path='/' exact render={() => <h2>Welcome to Social-App</h2>}/>
 
-            <div className="col-md-12">
-              <PersonDetails />
-            </div>
+              <Route path='/people/:id?' exact >
+                <ItemListFunc />
+                <PersonDetails />
+              </Route>
 
-            <div className="col-md-6">
-              <PostList />
-            </div>
+              <Route path='/posts/:id?' exact>
+                <PostList/> 
+                <CommentsList />
+              </Route>
 
-            <div className="col-md-6">
-              <CommentsList />
+              <Route render={() => <h2>Page not found</h2>}/>
+              </Switch>
             </div>
-
           </div>
-        </div>
+        
       </Router>
       </Provider>
     );

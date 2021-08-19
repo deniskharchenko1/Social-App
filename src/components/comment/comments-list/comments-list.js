@@ -25,15 +25,17 @@ const CommentsList = () => {
   return (isLoading) ? (
     <Spinner/>
   ) : (
-    <div className="comments-list comments-group">
-      {comments.map(comment => 
-        <div className="list-group-item"
-            key={comment.id}>
-          <p className='comments-list title'>{comment.name}</p> {comment.id}
-          <p>{comment.body}</p>
-          <p className='comments-list email'>{comment.email}</p>
-        </div>
-        )}
+    <div className="col-md-6">
+      <div className="comments-list comments-group">
+        {comments.map(comment => 
+          <div className="list-group-item"
+              key={comment.id}>
+            <p className='comments-list title'>{comment.name}</p> {comment.id}
+            <p>{comment.body}</p>
+            <p className='comments-list email'>{comment.email}</p>
+          </div>
+          )}
+      </div>
     </div>
   )
 }

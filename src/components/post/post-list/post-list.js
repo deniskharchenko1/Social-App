@@ -26,16 +26,18 @@ const PostList = () => {
   return (currentUser == null ) ? (
     <div>Выберите пользователя для отображения постов</div>
   ) : (
-    <div className="post-list post-group">
-      {posts.map(post => 
-      <div className={`list-group-item ${( currentPostId !== null && post.id === currentPostId) ? "active" : ""}`}
-          key={post.id}
-          onClick={() => dispatch(setCurrentPostId(post.id))}
-          >
-        <p className='post-list title'>{post.title}</p> {post.id}
-        <p>{post.body}</p>
+    <div className="col-md-6">
+      <div className="post-list post-group">
+        {posts.map(post => 
+        <div className={`list-group-item ${( currentPostId !== null && post.id === currentPostId) ? "active" : ""}`}
+            key={post.id}
+            onClick={() => dispatch(setCurrentPostId(post.id))}
+            >
+          <p className='post-list title'>{post.title}</p> {post.id}
+          <p>{post.body}</p>
+        </div>
+        )}   
       </div>
-      )}   
     </div>
   )
 }
