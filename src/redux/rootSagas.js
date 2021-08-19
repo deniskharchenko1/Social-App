@@ -10,7 +10,6 @@ export function* watchSagas() {
    yield all([
        usersSaga(),
        userSaga(),
-
        postsSaga(),
        commentsSaga()
    ])

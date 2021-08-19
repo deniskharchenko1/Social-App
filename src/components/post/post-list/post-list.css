@@ -15,6 +15,11 @@
     margin-bottom: 1rem;
 }
 
+.list-group-item .active {
+    background-color: #50cc37;
+
+}
+
 .post-list .title {
     font-weight: 700;
     text-transform: uppercase;

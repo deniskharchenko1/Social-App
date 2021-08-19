@@ -1,5 +1,5 @@
 import React from "react";
-import { useState, useSelector, useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import {useEffect} from "react";
 import Spinner from "../../spinner/spinner";
 
@@ -12,6 +12,8 @@ import { getUsers, getUser } from "../../../redux/users/actions";
 const ItemListFunc = () => {
     const users = useSelector(state => state.usersReducer.fetchedUsers);
     const isLoading = useSelector(state => state.usersReducer.isLoading);
+    const currentUser = useSelector(state => state.usersReducer.currentUser);
+
     const dispatch = useDispatch();
     
 
@@ -25,7 +27,7 @@ const ItemListFunc = () => {
     ) : (
       <ul className="item-list list-group">
         {users.map(user => 
-          <li className="list-group-item"
+          <li className={`list-group-item ${( currentUser !== null && user.id === currentUser.id) ? "active" : ""}`}
             key={user.id}
             onClick={() => dispatch(getUser(user.id))}
             >

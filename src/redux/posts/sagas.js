@@ -1,7 +1,7 @@
 import { takeEvery, put, call } from '@redux-saga/core/effects';
 import { GET_POSTS } from './types';
 import { getPostsSuccess, getPostsError} from './actions';
-import {fetchPosts, getAllPosts} from './api';
+import {fetchPosts} from './api';
 
 
 function* getPostsSaga(action) {

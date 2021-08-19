@@ -1,33 +1,17 @@
-import React, { Component } from 'react';
-import { useState, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import React from 'react';
+import { useSelector} from "react-redux";
 
 import './person-details.css';
-import Spinner from "../../spinner/spinner";
 
-
-import { getUser } from "../../../redux/users/actions";
-
-
-// ==============hooks
 
 const PersonDetails = () => {
-  const user = useSelector(state => state.usersReducer.currentUser);
-  const isLoading = useSelector(state => state.usersReducer.isLoading);
-
-  const dispatch = useDispatch();
-
-
-  useEffect(() => {
-    dispatch(getUser());
-  }, [dispatch, user]);
+  const user = useSelector(state => state.usersReducer.currentUser);   
   
   if (user == null ) {
     return <div>Выберите пользователя</div>
   }
 
   return (
-  
     <div className="person-details card">
       
       <img className="person-image"
@@ -52,83 +36,6 @@ const PersonDetails = () => {
       </div>
     </div>
   )
-  
-  
-  
 }
 
 export {PersonDetails};
-
-// ===========hooks
-
-
-
-
-// export default class PersonDetails extends Component {
-
-//   socialapiService = new SocialapiService();
-
-//   state = {
-//     users: null
-//   }
-
-//   componentDidMount() {
-//     this.updatePerson();
-//   }
-
-//   componentDidUpdate(prevProps) {
-//     if (this.props.personId !== prevProps.personId) {
-//       this.updatePerson();
-//     }
-//   }
-
-//   updatePerson() {
-//     const {personId} = this.props;
-//     if (!personId) {
-//       return;
-//     }
-
-//     this.socialapiService
-//       .getPerson(personId)
-//       .then((users) => {
-//         this.setState({users})
-//       })
-//   }
-
-//   render() {
-//     if (!this.state.users) {
-//       return <span>Select a person from a list</span>;
-//     }
-
-//     const { name, phone, email, website } = this.state.users;
-
-//     return (
-//       <div className="person-details card">
-        
-//         <img className="person-image"
-//           src="https://via.placeholder.com/600/771796"
-//           alt="character"/>
-//         <div className="card-body">
-//           <h4>{name} {this.props.personId}</h4>
-//           <ul className="list-group list-group-flush">
-//             <li className="list-group-item">
-//               <span className="term">Email: </span>
-//               <span>{email}</span>
-//             </li>
-//             <li className="list-group-item">
-//               <span className="term">Phone: </span>
-//               <span>{phone}</span>
-//             </li>
-//             <li className="list-group-item">
-//               <span className="term">Website: </span>
-//               <span>{website}</span>
-//             </li>
-//           </ul>
-//         </div>
-//       </div>
-//     )
-//   }
-// }
-
-
-

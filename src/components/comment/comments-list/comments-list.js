@@ -8,9 +8,6 @@ import './comments-list.css';
 import { getComments } from "../../../redux/comments/actions";
 
 
-
-// ============hooks
-
 const CommentsList = () => {
   const comments = useSelector(state => state.commentsReducer.fetchedComments);
   const isLoading = useSelector(state => state.commentsReducer.isLoading);
@@ -18,8 +15,11 @@ const CommentsList = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getComments(currentPostId));
+    if (currentPostId) {
+      dispatch(getComments(currentPostId));
+    }  
   }, [dispatch, currentPostId]);
+
 
 
   return (isLoading) ? (
@@ -38,7 +38,6 @@ const CommentsList = () => {
   )
 }
 
-
 export { CommentsList };
-//==============hooks
+
 
