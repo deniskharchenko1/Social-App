@@ -3,7 +3,6 @@ import Header from '../header';
 import {PeopleList} from '../user/people-list';
 import {PersonDetails} from '../user/person-details';
 import {PostList} from '../post/post-list';
-import {PostListCurrentUser} from '../post/post-list-current-user';
 import {CommentsList} from '../comment/comments-list';
 
 
@@ -41,14 +40,10 @@ export default class App extends Component {
               <Route path='/' exact render={() => <h2>Welcome to Social-App</h2>}/>
 
               <Route path='/people' exact component={PeopleList}/>        
-              <Route path='/people/:userId?' exact component={PersonDetails} />
-                        
-              <Route path='/posts' exact component={PostList}/>
-              <Route path='/people/posts/:userId' component={PostListCurrentUser}/>
+              <Route path='/people/:userId?' component={PersonDetails} />    
+                               
+              <Route path='/posts/:userId?' component={PostList}/> 
               <Route path='/comments/:postId' component={CommentsList}/>
-              <Route path='/people/posts/comments/:postId' component={CommentsList}/>
-
-
               <Route render={() => <h2>Page not found</h2>}/>
               </Switch>
             </div>

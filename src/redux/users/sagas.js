@@ -36,11 +36,6 @@ export function* userSaga() {
 }
 
 
-// export const usersSaga = [
-//     takeEvery(GET_USERS, getUsersSaga),
-//     takeEvery(GET_USER, getUserSaga)
-// ]
-    
 
 
 

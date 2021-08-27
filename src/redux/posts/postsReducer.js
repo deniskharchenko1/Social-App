@@ -9,8 +9,7 @@ import {
 
 const initialState = {
     isLoading: false,
-    error: '',
-    fetchedPosts: [], 
+    error: '', 
     fetchedAllPosts: [],
     currentPostId: null  
 }
@@ -40,7 +39,7 @@ export const postsReducer = (state = initialState, action) => {
         case GET_POSTS_SUCCESS:
             return {...state, 
                 isLoading: false,
-                fetchedPosts: action.payload    
+                fetchedAllPosts: action.payload    
             }
         case GET_POSTS_ERROR:
             return {...state, 

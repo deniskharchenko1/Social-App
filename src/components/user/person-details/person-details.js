@@ -19,7 +19,6 @@ const PersonDetails = ({match}) => {
   console.log(match.params.userId);
 
 
-
   if (user == null ) {
     return <div>Выберите пользователя</div>
   }
@@ -47,7 +46,7 @@ const PersonDetails = ({match}) => {
               <span>{user.website}</span>
             </li>
           </ul>
-          <Link to={`posts/${user.id}`}>Посмотреть посты</Link>
+          <Link to={`/posts/${user.id}`}>Посмотреть посты</Link>
         </div>
       </div>
     </div>
