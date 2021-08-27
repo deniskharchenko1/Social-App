@@ -1,4 +1,4 @@
-import {PostItem} from './post-list';
+import {PostItem} from './post-item';
 
 export {PostItem};
  
