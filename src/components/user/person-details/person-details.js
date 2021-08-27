@@ -1,12 +1,25 @@
 import React from 'react';
-import { useSelector} from "react-redux";
+import {useEffect} from "react";
+import { useSelector, useDispatch} from "react-redux";
+import {Link} from 'react-router-dom';
 
 import './person-details.css';
+import { getUser } from "../../../redux/users/actions";
 
 
-const PersonDetails = () => {
+const PersonDetails = ({match}) => {
   const user = useSelector(state => state.usersReducer.currentUser);   
+  const dispatch = useDispatch();
+
+
+  useEffect(() => {
+    dispatch(getUser(match.params.userId));
+  }, [dispatch, match]);
   
+  console.log(match.params.userId);
+
+
+
   if (user == null ) {
     return <div>Выберите пользователя</div>
   }
@@ -34,6 +47,7 @@ const PersonDetails = () => {
               <span>{user.website}</span>
             </li>
           </ul>
+          <Link to={`posts/${user.id}`}>Посмотреть посты</Link>
         </div>
       </div>
     </div>

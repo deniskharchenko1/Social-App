@@ -8,17 +8,17 @@ import './comments-list.css';
 import { getComments } from "../../../redux/comments/actions";
 
 
-const CommentsList = () => {
+const CommentsList = ({match}) => {
   const comments = useSelector(state => state.commentsReducer.fetchedComments);
   const isLoading = useSelector(state => state.commentsReducer.isLoading);
-  const currentPostId = useSelector(state => state.postsReducer.currentPostId);
+  // const currentPostId = useSelector(state => state.postsReducer.currentPostId);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (currentPostId) {
-      dispatch(getComments(currentPostId));
-    }  
-  }, [dispatch, currentPostId]);
+     
+      dispatch(getComments(match.params.postId));
+      
+  }, [dispatch, match]);
 
 
 

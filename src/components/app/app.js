@@ -1,9 +1,12 @@
 import React, {Component} from 'react';
 import Header from '../header';
-import { ItemListFunc} from '../user/item-list';
+import {PeopleList} from '../user/people-list';
 import {PersonDetails} from '../user/person-details';
 import {PostList} from '../post/post-list';
+import {PostListCurrentUser} from '../post/post-list-current-user';
 import {CommentsList} from '../comment/comments-list';
+
+
 
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { Provider } from 'react-redux';
@@ -37,15 +40,14 @@ export default class App extends Component {
             <Switch>
               <Route path='/' exact render={() => <h2>Welcome to Social-App</h2>}/>
 
-              <Route path='/people/:id?' exact >
-                <ItemListFunc />
-                <PersonDetails />
-              </Route>
+              <Route path='/people' exact component={PeopleList}/>        
+              <Route path='/people/:userId?' exact component={PersonDetails} />
+                        
+              <Route path='/posts' exact component={PostList}/>
+              <Route path='/people/posts/:userId' component={PostListCurrentUser}/>
+              <Route path='/comments/:postId' component={CommentsList}/>
+              <Route path='/people/posts/comments/:postId' component={CommentsList}/>
 
-              <Route path='/posts/:id?' exact>
-                <PostList/> 
-                <CommentsList />
-              </Route>
 
               <Route render={() => <h2>Page not found</h2>}/>
               </Switch>
