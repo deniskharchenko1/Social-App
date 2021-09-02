@@ -1,0 +1,21 @@
+.comments-list {
+    margin-bottom: 2rem;
+    display: block;
+}
+
+.comments-list   .list-group-item {
+    margin-bottom: 1rem;
+}
+
+.comments-list .title {
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 0;
+    color: rgb(219, 169, 60);
+}
+
+.comments-list .email {
+    
+    margin-bottom: 0;
+    color: rgb(60, 214, 219);
+}

@@ -1,0 +1,22 @@
+.item-list {
+  margin-bottom: 2rem;
+}
+
+.item-list .list-group-item {
+    cursor: pointer;
+}
+
+
+.list-group-item a:hover {
+  color: #00bc8c;
+}
+
+.item-list .list-group-item:hover {
+  background-color: #444;
+  border-color: #444;
+}
+
+
+.item-list .list-group-item .active {
+  background-color: rgb(84, 172, 57);
+}
