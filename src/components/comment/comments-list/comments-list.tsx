@@ -1,24 +1,27 @@
+// @ts-ignore
 import React, { useEffect, FC } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { RouteComponentProps } from "react-router";
+import { RouteComponentProps, match } from "react-router";
 
-import Spinner from "../../spinner/spinner";
-import { Alert } from "../../alert/alert";
 import "./comments-list.css";
-
 import { getComments } from "../../../redux/comments/actions";
 import { CommentsItem } from "../comments-item";
+import { RootStateType } from "../../../redux/type";
+import Spinner from "../../spinner/spinner";
+import { Alert } from "../../alert/alert";
 
-// import RootStoreType from "../../app";
+type PropsType = RouteComponentProps & {
+  match: match<{ postId: string }>;
+};
 
-export type PropType = RouteComponentProps;
+// eslint-disable-next-line @typescript-eslint/no-shadow
+const CommentsList: FC<PropsType> = ({ match }) => {
+  const {
+    fetchedComments: comments,
+    isLoading,
+    error,
+  } = useSelector((state: RootStateType) => state.comments);
 
-const CommentsList: FC<PropType> = ({ match }) => {
-  const comments = useSelector(
-    (state) => state.commentsReducer.fetchedComments
-  );
-  const isLoading = useSelector((state) => state.commentsReducer.isLoading);
-  const error = useSelector((state) => state.commentsReducer.error);
   const dispatch = useDispatch();
 
   useEffect(() => {

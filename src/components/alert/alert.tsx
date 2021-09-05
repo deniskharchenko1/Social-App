@@ -1,7 +1,10 @@
-import React, { FC } from "react";
+// @ts-ignore
+import React from "react";
 
-export const Alert: FC = () => (
-  <div className="alert alert-warning" role="alert">
-    Что-то пошло не так
-  </div>
-);
+export const Alert = () => {
+  return (
+    <div className="alert alert-warning" role="alert">
+      Что-то пошло не так
+    </div>
+  );
+};

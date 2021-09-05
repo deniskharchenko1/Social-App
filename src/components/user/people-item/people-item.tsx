@@ -1,14 +1,12 @@
+// @ts-ignore
 import React, { FC } from "react";
 import { Link } from "react-router-dom";
 import "./people-item.css";
 
-// import { UserType } from "../../../redux/users/type";
+import { UserType } from "../../../redux/users/type";
 
 type PropsType = {
-  peopleData: {
-    name: string;
-    id: number;
-  };
+  peopleData: UserType;
 };
 
 const PeopleItem: FC<PropsType> = ({ peopleData }) => {

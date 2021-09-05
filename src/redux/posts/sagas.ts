@@ -15,7 +15,13 @@ function* getAllPostsSaga() {
 
     yield put(getAllPostsSuccess(allPosts));
   } catch (error) {
-    yield put(getAllPostsError());
+    const stringError =
+      typeof error === "string"
+        ? error
+        : typeof error === "object"
+        ? error.toString()
+        : "error";
+    yield put(getAllPostsError(stringError));
   }
 }
 
@@ -25,7 +31,7 @@ function* getPostsSaga(action) {
 
     yield put(getPostsSuccess(posts));
   } catch (error) {
-    yield put(getPostsError());
+    yield put(getPostsError(error));
   }
 }
 

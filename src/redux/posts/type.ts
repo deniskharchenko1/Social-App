@@ -26,12 +26,12 @@ export type GetAllPostsSuccessActionType = {
 };
 export type GetAllPostsErrorActionType = {
   type: typeof GET_ALL_POSTS_ERROR;
-  payload: ErrorType;
+  payload: string;
 };
 
 export type GetPostsActionType = {
   type: typeof GET_POSTS;
-  payload: PostType["userId"];
+  payload: number;
 };
 export type getPostsSuccessActionType = {
   type: typeof GET_POSTS_SUCCESS;
@@ -39,10 +39,18 @@ export type getPostsSuccessActionType = {
 };
 export type GetPostsErrorActionType = {
   type: typeof GET_POSTS_ERROR;
-  payload: ErrorType;
+  payload: string;
 };
 
-export type InitialStateType = {
+export type PostsActions =
+  | GetAllPostsActionType
+  | GetAllPostsSuccessActionType
+  | GetAllPostsErrorActionType
+  | GetPostsActionType
+  | getPostsSuccessActionType
+  | GetPostsErrorActionType;
+
+export type PostInitialStateType = {
   isLoading: boolean;
   error: string;
   fetchedAllPosts: PostType[];

@@ -1,4 +1,5 @@
 import { takeEvery, put, call } from "@redux-saga/core/effects";
+
 import { GET_COMMENTS } from "./types";
 import { getCommentsSuccess, getCommentsError } from "./actions";
 import { fetchComments } from "./api";
@@ -8,7 +9,13 @@ function* getCommentsSaga(action) {
     const comments = yield call(() => fetchComments(action.payload));
     yield put(getCommentsSuccess(comments));
   } catch (error) {
-    yield put(getCommentsError());
+    const stringError =
+      typeof error === "string"
+        ? error
+        : typeof error === "object"
+        ? error.toString()
+        : "error";
+    yield put(getCommentsError(stringError));
   }
 }
 

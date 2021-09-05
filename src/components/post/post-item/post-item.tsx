@@ -1,14 +1,12 @@
+// @ts-ignore
 import React, { FC } from "react";
-
 import "./post-item.css";
 import { Link } from "react-router-dom";
 
+import { PostType } from "../../../redux/posts/type";
+
 type PropsType = {
-  postData: {
-    id: number;
-    body: string;
-    title: string;
-  };
+  postData: PostType;
 };
 
 const PostItem: FC<PropsType> = ({ postData }) => {

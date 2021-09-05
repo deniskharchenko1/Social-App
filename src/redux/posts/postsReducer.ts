@@ -6,9 +6,9 @@ import {
   GET_ALL_POSTS_SUCCESS,
   GET_ALL_POSTS_ERROR,
 } from "./types";
-import { InitialStateType } from "./type";
+import { PostInitialStateType, PostsActions } from "./type";
 
-const initialState = {
+const initialState: PostInitialStateType = {
   isLoading: false,
   error: "",
   fetchedAllPosts: [],
@@ -16,8 +16,8 @@ const initialState = {
 
 export const postsReducer = (
   state = initialState,
-  action
-): InitialStateType => {
+  action: PostsActions
+): PostInitialStateType => {
   switch (action.type) {
     case GET_ALL_POSTS:
       return { ...state, isLoading: true };

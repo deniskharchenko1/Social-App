@@ -6,9 +6,9 @@ import {
   GET_USER_SUCCESS,
   GET_USER_ERROR,
 } from "./types";
-import { InitialStateType } from "./type";
+import { UserInitialStateType, UsersActions } from "./type";
 
-const initialState = {
+const initialState: UserInitialStateType = {
   isLoading: false,
   error: "",
   fetchedUsers: [],
@@ -17,8 +17,8 @@ const initialState = {
 
 export const usersReducer = (
   state = initialState,
-  action
-): InitialStateType => {
+  action: UsersActions
+): UserInitialStateType => {
   switch (action.type) {
     case GET_USERS:
       return { ...state, isLoading: true };

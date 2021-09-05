@@ -1,26 +1,26 @@
+// @ts-ignore
 import React, { useEffect, FC } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import { RouteComponentProps } from "react-router";
+import { RouteComponentProps, match } from "react-router";
 
 import Spinner from "../../spinner";
 import { Alert } from "../../alert/alert";
-
 import "./person-details.css";
 import { getUser } from "../../../redux/users/actions";
-import RootStoreType from "../../app";
+import { RootStateType } from "../../../redux/type";
 
-export type PropType = RouteComponentProps;
+type PropsType = RouteComponentProps & {
+  match: match<{ userId: string }>;
+};
 
-const PersonDetails: FC<PropType> = ({ match }) => {
-  const user = useSelector(
-    (state): RootStoreType => state.usersReducer.currentUser
-  );
-  const isLoading = useSelector(
-    (state): RootStoreType => state.usersReducer.isLoading
-  );
-  const error = useSelector((state): RootStoreType => state.usersReducer.error);
-
+// eslint-disable-next-line @typescript-eslint/no-shadow
+const PersonDetails: FC<PropsType> = ({ match }) => {
+  const {
+    currentUser: user,
+    isLoading,
+    error,
+  } = useSelector((state: RootStateType) => state.users);
   const dispatch = useDispatch();
 
   useEffect(() => {

@@ -1,3 +1,4 @@
+// @ts-ignore
 import React, { FC } from "react";
 import { Link } from "react-router-dom";
 

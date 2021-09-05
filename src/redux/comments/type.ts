@@ -5,15 +5,11 @@ import {
 } from "./types";
 
 export type CommentType = {
-  postId: number;
+  postId: number | string;
   id: number;
   name: string;
   body: string;
   email: string;
-};
-
-export type ErrorType = {
-  error: string;
 };
 
 export type GetCommentsActionType = {
@@ -26,10 +22,15 @@ export type GetCommentsSuccessActionType = {
 };
 export type GetCommentsErrorActionType = {
   type: typeof GET_COMMENTS_ERROR;
-  payload: ErrorType;
+  payload: string;
 };
 
-export type InitialStateType = {
+export type CommentsActions =
+  | GetCommentsActionType
+  | GetCommentsSuccessActionType
+  | GetCommentsErrorActionType;
+
+export type CommentInitialStateType = {
   isLoading: boolean;
   error: string;
   fetchedComments: CommentType[];

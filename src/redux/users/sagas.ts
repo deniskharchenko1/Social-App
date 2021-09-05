@@ -15,7 +15,13 @@ function* getUsersSaga() {
 
     yield put(getUsersSuccess(users));
   } catch (error) {
-    yield put(getUsersError());
+    const stringError =
+      typeof error === "string"
+        ? error
+        : typeof error === "object"
+        ? error.toString()
+        : "error";
+    yield put(getUsersError(stringError));
   }
 }
 
@@ -25,7 +31,7 @@ function* getUserSaga(action) {
 
     yield put(getUserSuccess(user));
   } catch (error) {
-    yield put(getUserError());
+    yield put(getUserError(error));
   }
 }
 

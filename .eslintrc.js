@@ -18,6 +18,7 @@ module.exports = {
     },
     ecmaVersion: 12,
     sourceType: 'module',
+    tsconfigRootDir: __dirname,
     project: './tsconfig.json',
   },
   plugins: ['react', 'prettier', '@typescript-eslint', 'react-hooks', 'import'],
@@ -30,6 +31,8 @@ module.exports = {
     'no-new': 'off',
     'react/prop-types': 'off',
     'react/display-name': 'off',
+    'react/jsx-uses-react': 'off',
+    'react/react-in-jsx-scope': 'off',
   },
   overrides: [
     {

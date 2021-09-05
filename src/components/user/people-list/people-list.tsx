@@ -1,3 +1,4 @@
+// @ts-ignore
 import React, { FC, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
@@ -6,17 +7,14 @@ import { Alert } from "../../alert/alert";
 import "./people-list.css";
 import { PeopleItem } from "../people-item";
 import { getUsers } from "../../../redux/users/actions";
-// import { UserType } from "../../../redux/users/type";
-import RootStoreType from "../../app";
+import { RootStateType } from "../../../redux/type";
 
 const PeopleList: FC = () => {
-  const users = useSelector(
-    (state): RootStoreType => state.usersReducer.fetchedUsers
-  );
+  const users = useSelector((state: RootStateType) => state.users.fetchedUsers);
   const isLoading = useSelector(
-    (state): RootStoreType => state.usersReducer.isLoading
+    (state: RootStateType) => state.users.isLoading
   );
-  const error = useSelector((state): RootStoreType => state.usersReducer.error);
+  const error = useSelector((state: RootStateType) => state.users.error);
 
   const dispatch = useDispatch();
 
@@ -35,7 +33,7 @@ const PeopleList: FC = () => {
           ))}
         </ul>
       </div>
-      {error && <Alert message={error} />}
+      {error && <Alert />}
     </>
   );
 };

@@ -1,14 +1,11 @@
+// @ts-ignore
 import React, { FC } from "react";
 
 import "./comments-item.css";
+import { CommentType } from "../../../redux/comments/type";
 
 type PropsType = {
-  commentsData: {
-    name: string;
-    id: number;
-    body: string;
-    email: string;
-  };
+  commentsData: CommentType;
 };
 
 const CommentsItem: FC<PropsType> = ({ commentsData }) => {

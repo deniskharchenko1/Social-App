@@ -1,24 +1,29 @@
+// @ts-ignore
 import React, { useEffect, FC } from "react";
 import { useDispatch, useSelector } from "react-redux";
-
 import "./post-list.css";
-import { RouteComponentProps } from "react-router";
+import { RouteComponentProps, match } from "react-router";
 
 import Spinner from "../../spinner/spinner";
 import { Alert } from "../../alert/alert";
 import { getAllPosts, getPosts } from "../../../redux/posts/actions";
 import { PostItem } from "../post-item";
-// import RootStoreType from "../../app";
+import { RootStateType } from "../../../redux/type";
 
-export type PropType = RouteComponentProps;
+type PropsType = RouteComponentProps & {
+  match: match<{ userId: string }>;
+};
 
-const PostList: FC<PropType> = (props) => {
-  const posts = useSelector((state) => state.postsReducer.fetchedAllPosts);
-  const isLoading = useSelector((state) => state.postsReducer.isLoading);
-  const error = useSelector((state) => state.postsReducer.error);
+// eslint-disable-next-line @typescript-eslint/no-shadow
+const PostList: FC<PropsType> = ({ match }) => {
+  const {
+    fetchedAllPosts: posts,
+    isLoading,
+    error,
+  } = useSelector((state: RootStateType) => state.posts);
 
   const dispatch = useDispatch();
-  const userId = props.match.params.userId;
+  const userId = match.params.userId;
 
   useEffect(() => {
     if (userId) {

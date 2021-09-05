@@ -14,9 +14,7 @@ export type UserType = {
   phone: string;
   website: string;
 };
-export type ErrorType = {
-  error: string;
-};
+
 // error как отдельный тип или ссылаться в InitialStateType
 
 export type GetUsersActionType = {
@@ -28,24 +26,32 @@ export type GetUsersSuccessActionType = {
 };
 export type GetUsersErrorActionType = {
   type: typeof GET_USERS_ERROR;
-  payload: ErrorType;
+  payload: string;
 };
 
 export type GetUserActionType = {
   type: typeof GET_USER;
-  payload: UserType["id"];
+  payload: number;
 };
 // id передавать или без него
 export type GetUserSuccessActionType = {
   type: typeof GET_USER_SUCCESS;
-  payload: UserType[];
+  payload: UserType;
 };
 export type GetUserErrorActionType = {
   type: typeof GET_USER_ERROR;
-  payload: ErrorType;
+  payload: string;
 };
 
-export type InitialStateType = {
+export type UsersActions =
+  | GetUsersActionType
+  | GetUsersSuccessActionType
+  | GetUsersErrorActionType
+  | GetUserActionType
+  | GetUserSuccessActionType
+  | GetUserErrorActionType;
+
+export type UserInitialStateType = {
   isLoading: boolean;
   error: string;
   fetchedUsers: UserType[];

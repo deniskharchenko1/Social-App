@@ -24,7 +24,6 @@
     "noEmit": true
   },
   "include": [
-    "types/**/*",
     "src/**/*",
     ".eslintrc.js",
     "./declarations.d.ts"
@@ -32,7 +31,6 @@
   "exclude": [
     "./node_modules",
     "./dist",
-    "./webpack",
     "./public"
   ]
 }

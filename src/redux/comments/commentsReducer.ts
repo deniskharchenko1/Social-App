@@ -3,15 +3,18 @@ import {
   GET_COMMENTS_SUCCESS,
   GET_COMMENTS_ERROR,
 } from "./types";
-import { InitialStateType } from "./type";
+import { CommentInitialStateType, CommentsActions } from "./type";
 
-const initialState: InitialStateType = {
+const initialState: CommentInitialStateType = {
   isLoading: false,
   error: "",
   fetchedComments: [],
 };
 
-export const commentsReducer = (state = initialState, action) => {
+export const commentsReducer = (
+  state = initialState,
+  action: CommentsActions
+): CommentInitialStateType => {
   switch (action.type) {
     case GET_COMMENTS:
       return { ...state, isLoading: true };
