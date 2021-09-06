@@ -20,34 +20,34 @@ export const getUsers = (): GetUsersActionType => {
     type: GET_USERS,
   };
 };
-export const getUsersSuccess = (data): GetUsersSuccessActionType => {
+export const getUsersSuccess = (data: any): GetUsersSuccessActionType => {
   return {
     type: GET_USERS_SUCCESS,
     payload: data,
   };
 };
-export const getUsersError = (error): GetUsersErrorActionType => {
+export const getUsersError = (error: any): GetUsersErrorActionType => {
   return {
     type: GET_USERS_ERROR,
     payload: error,
   };
 };
 
-export const getUser = (id): GetUserActionType => {
+export const getUser = (id: any): GetUserActionType => {
   return {
     type: GET_USER,
     payload: id,
   };
 };
 
-export const getUserSuccess = (data): GetUserSuccessActionType => {
+export const getUserSuccess = (data: any): GetUserSuccessActionType => {
   return {
     type: GET_USER_SUCCESS,
     payload: data,
   };
 };
 
-export const getUserError = (error): GetUserErrorActionType => {
+export const getUserError = (error: any): GetUserErrorActionType => {
   return {
     type: GET_USER_ERROR,
     payload: error,

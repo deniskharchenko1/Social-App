@@ -20,32 +20,32 @@ export const getAllPosts = (): GetAllPostsActionType => {
     type: GET_ALL_POSTS,
   };
 };
-export const getAllPostsSuccess = (data): GetAllPostsSuccessActionType => {
+export const getAllPostsSuccess = (data: any): GetAllPostsSuccessActionType => {
   return {
     type: GET_ALL_POSTS_SUCCESS,
     payload: data,
   };
 };
-export const getAllPostsError = (error): GetAllPostsErrorActionType => {
+export const getAllPostsError = (error: any): GetAllPostsErrorActionType => {
   return {
     type: GET_ALL_POSTS_ERROR,
     payload: error,
   };
 };
 
-export const getPosts = (userId): GetPostsActionType => {
+export const getPosts = (userId: any): GetPostsActionType => {
   return {
     type: GET_POSTS,
     payload: userId,
   };
 };
-export const getPostsSuccess = (data): getPostsSuccessActionType => {
+export const getPostsSuccess = (data: any): getPostsSuccessActionType => {
   return {
     type: GET_POSTS_SUCCESS,
     payload: data,
   };
 };
-export const getPostsError = (error): GetPostsErrorActionType => {
+export const getPostsError = (error: any): GetPostsErrorActionType => {
   return {
     type: GET_POSTS_ERROR,
     payload: error,

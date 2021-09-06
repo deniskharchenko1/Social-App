@@ -11,22 +11,20 @@ import { fetchPosts, getAllPosts } from "./api";
 
 function* getAllPostsSaga() {
   try {
+    // @ts-ignore
     const allPosts = yield call(getAllPosts);
 
     yield put(getAllPostsSuccess(allPosts));
   } catch (error) {
-    const stringError =
-      typeof error === "string"
-        ? error
-        : typeof error === "object"
-        ? error.toString()
-        : "error";
+    const stringError = typeof error === "string" ? error : "error";
     yield put(getAllPostsError(stringError));
   }
 }
 
+// @ts-ignore
 function* getPostsSaga(action) {
   try {
+    // @ts-ignore
     const posts = yield call(() => fetchPosts(action.payload));
 
     yield put(getPostsSuccess(posts));

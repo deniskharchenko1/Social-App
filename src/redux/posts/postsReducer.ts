@@ -17,7 +17,7 @@ const initialState: PostInitialStateType = {
 export const postsReducer = (
   state = initialState,
   action: PostsActions
-): PostInitialStateType => {
+): PostInitialStateType | null => {
   switch (action.type) {
     case GET_ALL_POSTS:
       return { ...state, isLoading: true };

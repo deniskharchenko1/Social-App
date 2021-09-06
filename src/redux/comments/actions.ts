@@ -9,21 +9,21 @@ import {
   GetCommentsErrorActionType,
 } from "./type";
 
-export const getComments = (postId): GetCommentsActionType => {
+export const getComments = (postId: any): GetCommentsActionType => {
   return {
     type: GET_COMMENTS,
     payload: postId,
   };
 };
 
-export function getCommentsSuccess(data): GetCommentsSuccessActionType {
+export function getCommentsSuccess(data: any): GetCommentsSuccessActionType {
   return {
     type: GET_COMMENTS_SUCCESS,
     payload: data,
   };
 }
 
-export function getCommentsError(error): GetCommentsErrorActionType {
+export function getCommentsError(error: any): GetCommentsErrorActionType {
   return {
     type: GET_COMMENTS_ERROR,
     payload: error,

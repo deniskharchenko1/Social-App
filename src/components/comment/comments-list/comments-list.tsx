@@ -14,7 +14,7 @@ type PropsType = RouteComponentProps & {
   match: match<{ postId: string }>;
 };
 
-// eslint-disable-next-line @typescript-eslint/no-shadow
+// eslint-disable-next-line
 const CommentsList: FC<PropsType> = ({ match }) => {
   const {
     fetchedComments: comments,

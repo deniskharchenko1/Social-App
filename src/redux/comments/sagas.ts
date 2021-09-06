@@ -4,17 +4,13 @@ import { GET_COMMENTS } from "./types";
 import { getCommentsSuccess, getCommentsError } from "./actions";
 import { fetchComments } from "./api";
 
-function* getCommentsSaga(action) {
+function* getCommentsSaga(action: any) {
   try {
+    // @ts-ignore
     const comments = yield call(() => fetchComments(action.payload));
     yield put(getCommentsSuccess(comments));
   } catch (error) {
-    const stringError =
-      typeof error === "string"
-        ? error
-        : typeof error === "object"
-        ? error.toString()
-        : "error";
+    const stringError = typeof error === "string" ? error : "error";
     yield put(getCommentsError(stringError));
   }
 }

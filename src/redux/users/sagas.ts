@@ -11,22 +11,19 @@ import { fetchUsers, getPerson } from "./api";
 
 function* getUsersSaga() {
   try {
+    // @ts-ignore
     const users = yield call(fetchUsers);
 
     yield put(getUsersSuccess(users));
   } catch (error) {
-    const stringError =
-      typeof error === "string"
-        ? error
-        : typeof error === "object"
-        ? error.toString()
-        : "error";
+    const stringError = typeof error === "string" ? error : "error";
     yield put(getUsersError(stringError));
   }
 }
 
-function* getUserSaga(action) {
+function* getUserSaga(action: any) {
   try {
+    // @ts-ignore
     const user = yield call(() => getPerson(action.payload));
 
     yield put(getUserSuccess(user));
