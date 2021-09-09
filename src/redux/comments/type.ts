@@ -14,7 +14,7 @@ export type CommentType = {
 
 export type GetCommentsActionType = {
   type: typeof GET_COMMENTS;
-  payload: CommentType["postId"];
+  payload: number | string;
 };
 export type GetCommentsSuccessActionType = {
   type: typeof GET_COMMENTS_SUCCESS;
