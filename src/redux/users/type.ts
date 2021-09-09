@@ -8,14 +8,12 @@ import {
 } from "./types";
 
 export type UserType = {
-  id: number;
+  id: number | string;
   name: string;
   email: string;
   phone: string;
   website: string;
 };
-
-// error как отдельный тип или ссылаться в InitialStateType
 
 export type GetUsersActionType = {
   type: typeof GET_USERS;
@@ -33,7 +31,7 @@ export type GetUserActionType = {
   type: typeof GET_USER;
   payload: number;
 };
-// id передавать или без него
+
 export type GetUserSuccessActionType = {
   type: typeof GET_USER_SUCCESS;
   payload: UserType;

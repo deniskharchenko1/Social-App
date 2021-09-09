@@ -1,7 +1,6 @@
-// @ts-ignore
 import React, { useEffect, FC } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { RouteComponentProps, match } from "react-router";
+import { RouteComponentProps, match as matchThis } from "react-router";
 
 import "./comments-list.css";
 import { getComments } from "../../../redux/comments/actions";
@@ -11,10 +10,9 @@ import Spinner from "../../spinner/spinner";
 import { Alert } from "../../alert/alert";
 
 type PropsType = RouteComponentProps & {
-  match: match<{ postId: string }>;
+  match: matchThis<{ postId: string }>;
 };
 
-// eslint-disable-next-line
 const CommentsList: FC<PropsType> = ({ match }) => {
   const {
     fetchedComments: comments,

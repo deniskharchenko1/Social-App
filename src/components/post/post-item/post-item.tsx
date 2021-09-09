@@ -1,4 +1,3 @@
-// @ts-ignore
 import React, { FC } from "react";
 import "./post-item.css";
 import { Link } from "react-router-dom";

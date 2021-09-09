@@ -1,4 +1,5 @@
 import { takeEvery, put, call } from "@redux-saga/core/effects";
+import { SagaIterator } from "@redux-saga/core";
 
 import { GET_POSTS, GET_ALL_POSTS } from "./types";
 import {
@@ -8,35 +9,40 @@ import {
   getAllPostsError,
 } from "./actions";
 import { fetchPosts, getAllPosts } from "./api";
+import { GetPostsActionType } from "./type";
 
-function* getAllPostsSaga() {
+function* getAllPostsSaga(): SagaIterator {
   try {
-    // @ts-ignore
     const allPosts = yield call(getAllPosts);
 
     yield put(getAllPostsSuccess(allPosts));
   } catch (error) {
-    const stringError = typeof error === "string" ? error : "error";
+    const stringError =
+      typeof error === "string"
+        ? error
+        : typeof error === "object"
+        ? String(error)
+        : "error";
     yield put(getAllPostsError(stringError));
   }
 }
 
-// @ts-ignore
-function* getPostsSaga(action) {
+function* getPostsSaga(action: GetPostsActionType): SagaIterator {
   try {
-    // @ts-ignore
     const posts = yield call(() => fetchPosts(action.payload));
-
     yield put(getPostsSuccess(posts));
   } catch (error) {
-    yield put(getPostsError(error));
+    const stringError =
+      typeof error === "string"
+        ? error
+        : typeof error === "object"
+        ? String(error)
+        : "error";
+    yield put(getPostsError(stringError));
   }
 }
 
-export function* allPostsSaga() {
-  yield takeEvery(GET_ALL_POSTS, getAllPostsSaga);
-}
-
-export function* postsSaga() {
-  yield takeEvery(GET_POSTS, getPostsSaga);
-}
+export const postsSaga = [
+  takeEvery(GET_ALL_POSTS, getAllPostsSaga),
+  takeEvery(GET_POSTS, getPostsSaga),
+];

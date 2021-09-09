@@ -7,23 +7,26 @@ import {
   GetCommentsActionType,
   GetCommentsSuccessActionType,
   GetCommentsErrorActionType,
+  CommentType,
 } from "./type";
 
-export const getComments = (postId: any): GetCommentsActionType => {
+export const getComments = (postId: number | string): GetCommentsActionType => {
   return {
     type: GET_COMMENTS,
     payload: postId,
   };
 };
 
-export function getCommentsSuccess(data: any): GetCommentsSuccessActionType {
+export function getCommentsSuccess(
+  data: CommentType[]
+): GetCommentsSuccessActionType {
   return {
     type: GET_COMMENTS_SUCCESS,
     payload: data,
   };
 }
 
-export function getCommentsError(error: any): GetCommentsErrorActionType {
+export function getCommentsError(error: string): GetCommentsErrorActionType {
   return {
     type: GET_COMMENTS_ERROR,
     payload: error,

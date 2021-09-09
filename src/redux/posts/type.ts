@@ -8,13 +8,10 @@ import {
 } from "./types";
 
 export type PostType = {
-  userId: number;
+  userId: string | number;
   id: number;
   title: string;
   body: string;
-};
-export type ErrorType = {
-  error: string;
 };
 
 export type GetAllPostsActionType = {

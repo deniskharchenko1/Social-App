@@ -1,8 +1,7 @@
-// @ts-ignore
 import React, { useEffect, FC } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "./post-list.css";
-import { RouteComponentProps, match } from "react-router";
+import { RouteComponentProps, match as matchThis } from "react-router";
 
 import Spinner from "../../spinner/spinner";
 import { Alert } from "../../alert/alert";
@@ -11,10 +10,9 @@ import { PostItem } from "../post-item";
 import { RootStateType } from "../../../redux/type";
 
 type PropsType = RouteComponentProps & {
-  match: match<{ userId: string }>;
+  match: matchThis<{ userId: string }>;
 };
 
-// eslint-disable-next-line @typescript-eslint/no-shadow
 const PostList: FC<PropsType> = ({ match }) => {
   const {
     fetchedAllPosts: posts,

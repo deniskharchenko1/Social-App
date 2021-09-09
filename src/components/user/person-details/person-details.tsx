@@ -1,8 +1,7 @@
-// @ts-ignore
 import React, { useEffect, FC } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import { RouteComponentProps, match } from "react-router";
+import { RouteComponentProps, match as matchThis } from "react-router";
 
 import Spinner from "../../spinner";
 import { Alert } from "../../alert/alert";
@@ -11,10 +10,9 @@ import { getUser } from "../../../redux/users/actions";
 import { RootStateType } from "../../../redux/type";
 
 type PropsType = RouteComponentProps & {
-  match: match<{ userId: string }>;
+  match: matchThis<{ userId: string }>;
 };
 
-// eslint-disable-next-line @typescript-eslint/no-shadow
 const PersonDetails: FC<PropsType> = ({ match }) => {
   const {
     currentUser: user,
@@ -26,8 +24,6 @@ const PersonDetails: FC<PropsType> = ({ match }) => {
   useEffect(() => {
     dispatch(getUser(match.params.userId));
   }, [dispatch, match]);
-
-  // console.log(match.params.userId);
 
   if (user == null) {
     return <div>Выберите пользователя</div>;

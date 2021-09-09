@@ -1,4 +1,5 @@
 import { takeEvery, put, call } from "@redux-saga/core/effects";
+import { SagaIterator } from "@redux-saga/core";
 
 import { GET_USERS, GET_USER } from "./types";
 import {
@@ -8,34 +9,40 @@ import {
   getUserError,
 } from "./actions";
 import { fetchUsers, getPerson } from "./api";
+import { GetUserActionType } from "./type";
 
-function* getUsersSaga() {
+function* getUsersSaga(): SagaIterator {
   try {
-    // @ts-ignore
     const users = yield call(fetchUsers);
-
     yield put(getUsersSuccess(users));
   } catch (error) {
-    const stringError = typeof error === "string" ? error : "error";
+    const stringError =
+      typeof error === "string"
+        ? error
+        : typeof error === "object"
+        ? String(error)
+        : "error";
     yield put(getUsersError(stringError));
   }
 }
 
-function* getUserSaga(action: any) {
+function* getUserSaga(action: GetUserActionType): SagaIterator {
   try {
-    // @ts-ignore
     const user = yield call(() => getPerson(action.payload));
 
     yield put(getUserSuccess(user));
   } catch (error) {
-    yield put(getUserError(error));
+    const stringError =
+      typeof error === "string"
+        ? error
+        : typeof error === "object"
+        ? String(error)
+        : "error";
+    yield put(getUserError(stringError));
   }
 }
 
-export function* usersSaga() {
-  yield takeEvery(GET_USERS, getUsersSaga);
-}
-
-export function* userSaga() {
-  yield takeEvery(GET_USER, getUserSaga);
-}
+export const usersSaga = [
+  takeEvery(GET_USERS, getUsersSaga),
+  takeEvery(GET_USER, getUserSaga),
+];

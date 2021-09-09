@@ -5,7 +5,7 @@ export async function fetchUsers(): Promise<UserType[]> {
   return await response.json();
 }
 
-export async function getPerson(id: any): Promise<UserType> {
+export async function getPerson(id: number): Promise<UserType> {
   const user = await fetch(`https://jsonplaceholder.typicode.com/users/${id}`);
   return await user.json();
 }

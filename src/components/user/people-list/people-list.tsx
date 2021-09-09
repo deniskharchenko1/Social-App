@@ -1,4 +1,3 @@
-// @ts-ignore
 import React, { FC, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
