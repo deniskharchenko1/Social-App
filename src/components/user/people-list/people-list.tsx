@@ -8,13 +8,14 @@ import { PeopleItem } from "../people-item";
 import { getUsers } from "../../../redux/users/actions";
 import { RootStateType } from "../../../redux/type";
 
-// debugger;
 const PeopleList: FC = () => {
   const {
     fetchedUsers: users,
     isLoading,
     error,
-  } = useSelector((state: RootStateType) => state.users);
+  } = useSelector((state: RootStateType) => {
+    return state.users;
+  });
 
   const dispatch = useDispatch();
 
@@ -37,7 +38,5 @@ const PeopleList: FC = () => {
     </>
   );
 };
-
-// debugger;
 
 export { PeopleList };

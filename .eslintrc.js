@@ -24,9 +24,9 @@ module.exports = {
   plugins: ['react', 'prettier', '@typescript-eslint', 'react-hooks', 'import'],
   rules: {
     '@typescript-eslint/no-use-before-define': ['error'],
-    'prettier/prettier': 'error',
-    'no-console': 'error',
-    'no-debugger': 'error',
+    'prettier/prettier': 'warn',
+    'no-console': 'warn',
+    'no-debugger': 'warn',
     'no-use-before-define': 'off',
     'no-new': 'off',
     'react/prop-types': 'off',
@@ -38,14 +38,8 @@ module.exports = {
     {
       files: ['**/*.ts', '**/*.tsx'],
       rules: {
-        '@typescript-eslint/no-unused-vars': [
-          1,
-          {
-            args: 'none',
-            ignoreRestSiblings: true,
-          },
-        ],
-        '@typescript-eslint/no-shadow': ['error'],
+        '@typescript-eslint/no-unused-vars': ['warn'],
+        '@typescript-eslint/no-shadow': ['warn'],
         '@typescript-eslint/no-use-before-define': [
           'error',
           {

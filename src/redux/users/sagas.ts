@@ -27,7 +27,6 @@ function* getUsersSaga(): SagaIterator {
 }
 
 function* getUserSaga(action: GetUserActionType): SagaIterator {
-  // правильный ли тип action?
   try {
     const user = yield call(() => getPerson(action.payload));
 
