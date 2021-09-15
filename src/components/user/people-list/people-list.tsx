@@ -8,12 +8,13 @@ import { PeopleItem } from "../people-item";
 import { getUsers } from "../../../redux/users/actions";
 import { RootStateType } from "../../../redux/type";
 
+// debugger;
 const PeopleList: FC = () => {
-  const users = useSelector((state: RootStateType) => state.users.fetchedUsers);
-  const isLoading = useSelector(
-    (state: RootStateType) => state.users.isLoading
-  );
-  const error = useSelector((state: RootStateType) => state.users.error);
+  const {
+    fetchedUsers: users,
+    isLoading,
+    error,
+  } = useSelector((state: RootStateType) => state.users);
 
   const dispatch = useDispatch();
 
@@ -36,5 +37,7 @@ const PeopleList: FC = () => {
     </>
   );
 };
+
+// debugger;
 
 export { PeopleList };
