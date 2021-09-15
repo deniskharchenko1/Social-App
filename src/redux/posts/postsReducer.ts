@@ -32,5 +32,7 @@ export const postsReducer = (
       return { ...state, isLoading: false, fetchedAllPosts: action.payload };
     case GET_POSTS_ERROR:
       return { ...state, isLoading: false, error: action.payload };
+    default:
+      return state;
   }
 };

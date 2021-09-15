@@ -14,7 +14,6 @@ import { GetPostsActionType } from "./type";
 function* getAllPostsSaga(): SagaIterator {
   try {
     const allPosts = yield call(getAllPosts);
-
     yield put(getAllPostsSuccess(allPosts));
   } catch (error) {
     const stringError =

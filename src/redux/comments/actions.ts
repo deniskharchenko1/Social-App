@@ -10,10 +10,10 @@ import {
   CommentType,
 } from "./type";
 
-export const getComments = (postId: number | string): GetCommentsActionType => {
+export const getComments = (postId: string): GetCommentsActionType => {
   return {
     type: GET_COMMENTS,
-    payload: postId,
+    payload: +postId,
   };
 };
 

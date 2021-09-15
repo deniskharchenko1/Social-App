@@ -8,7 +8,7 @@ import {
 } from "./types";
 
 export type PostType = {
-  userId: string | number;
+  userId: number;
   id: number;
   title: string;
   body: string;
