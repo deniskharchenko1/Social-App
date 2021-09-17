@@ -3,10 +3,6 @@
     display: block;
 }
 
-.post-list .list-group-item .title {
-    cursor: pointer;
-}
-
 .post-list .list-group-item:hover {
     background-color: #383838;
 }
@@ -17,7 +13,6 @@
 
 .list-group-item .active {
     background-color: #50cc37;
-
 }
 
 .post-list .title {
