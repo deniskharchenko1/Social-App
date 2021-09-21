@@ -5,7 +5,7 @@ import {
 } from "./types";
 
 export type CommentType = {
-  postId: number | string;
+  postId: number;
   id: number;
   name: string;
   body: string;
