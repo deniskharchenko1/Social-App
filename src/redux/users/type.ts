@@ -8,7 +8,7 @@ import {
 } from "./types";
 
 export type UserType = {
-  id: number | string;
+  id: number;
   name: string;
   email: string;
   phone: string;

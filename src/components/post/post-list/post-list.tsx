@@ -21,7 +21,7 @@ const PostList: FC<PropsType> = ({ match }) => {
   } = useSelector((state: RootStateType) => state.posts);
 
   const dispatch = useDispatch();
-  const userId = match.params.userId;
+  const userId = parseInt(match.params.userId);
 
   useEffect(() => {
     if (userId) {

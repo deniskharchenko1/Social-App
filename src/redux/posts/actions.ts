@@ -35,10 +35,10 @@ export const getAllPostsError = (error: string): GetAllPostsErrorActionType => {
     payload: error,
   };
 };
-export const getPosts = (userId: string): GetPostsActionType => {
+export const getPosts = (userId: number): GetPostsActionType => {
   return {
     type: GET_POSTS,
-    payload: +userId,
+    payload: userId,
   };
 };
 export const getPostsSuccess = (

@@ -21,9 +21,9 @@ const CommentsList: FC<PropsType> = ({ match }) => {
   } = useSelector((state: RootStateType) => state.comments);
 
   const dispatch = useDispatch();
-
+  const postId = parseInt(match.params.postId)
   useEffect(() => {
-    dispatch(getComments(match.params.postId));
+    dispatch(getComments(postId));
   }, [dispatch, match]);
 
   return isLoading ? (

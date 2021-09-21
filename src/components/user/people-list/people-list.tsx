@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState } from "react";
+import React, {FC, useEffect, useState, useMemo, useCallback} from "react";
 import { useSelector, useDispatch } from "react-redux";
 
 import Spinner from "../../spinner";
@@ -25,9 +25,15 @@ const PeopleList: FC = () => {
 
   const [value, setValue] = useState("");
 
-  const searchedUsers = users.filter((user) => {
-    return user.name.toLocaleLowerCase().includes(value.toLocaleLowerCase());
-  });
+
+   const searchedUsers = useMemo(() => {
+     return users.filter((user) => {
+      return user.name.toLowerCase().includes(value.toLowerCase());
+   })}, [value, users])
+
+  const memoizedCallback = useCallback(
+      (event) => setValue(event.target.value), []
+  );
 
   return isLoading ? (
     <Spinner />
@@ -40,7 +46,7 @@ const PeopleList: FC = () => {
               type="text"
               placeholder="Search user"
               className="form-control"
-              onChange={(event) => setValue(event.target.value)}
+              onChange={memoizedCallback}
             />
           </div>
         </form>

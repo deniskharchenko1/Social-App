@@ -36,10 +36,10 @@ export const getUsersError = (error: string): GetUsersErrorActionType => {
   };
 };
 
-export const getUser = (id: string): GetUserActionType => {
+export const getUser = (id: number): GetUserActionType => {
   return {
     type: GET_USER,
-    payload: +id,
+    payload: id,
   };
 };
 

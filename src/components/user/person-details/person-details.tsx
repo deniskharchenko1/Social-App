@@ -21,8 +21,10 @@ const PersonDetails: FC<PropsType> = ({ match }) => {
   } = useSelector((state: RootStateType) => state.users);
   const dispatch = useDispatch();
 
+  const userId = parseInt(match.params.userId);
+
   useEffect(() => {
-    dispatch(getUser(match.params.userId));
+    dispatch(getUser(userId));
   }, [dispatch, match]);
 
   if (user == null) {
