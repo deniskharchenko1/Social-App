@@ -25,7 +25,7 @@ const PersonDetails: FC<PropsType> = ({ match }) => {
 
   useEffect(() => {
     dispatch(getUser(userId));
-  }, [dispatch, match]);
+  }, [dispatch, userId]);
 
   if (user == null) {
     return <div>Выберите пользователя</div>;

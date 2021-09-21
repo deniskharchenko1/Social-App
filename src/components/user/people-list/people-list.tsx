@@ -1,4 +1,4 @@
-import React, {FC, useEffect, useState, useMemo, useCallback} from "react";
+import React, { FC, useEffect, useState, useMemo, useCallback } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
 import Spinner from "../../spinner";
@@ -25,14 +25,15 @@ const PeopleList: FC = () => {
 
   const [value, setValue] = useState("");
 
-
-   const searchedUsers = useMemo(() => {
-     return users.filter((user) => {
+  const searchedUsers = useMemo(() => {
+    return users.filter((user) => {
       return user.name.toLowerCase().includes(value.toLowerCase());
-   })}, [value, users])
+    });
+  }, [value, users]);
 
   const memoizedCallback = useCallback(
-      (event) => setValue(event.target.value), []
+    (event) => setValue(event.target.value),
+    []
   );
 
   return isLoading ? (

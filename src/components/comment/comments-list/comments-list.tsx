@@ -21,10 +21,10 @@ const CommentsList: FC<PropsType> = ({ match }) => {
   } = useSelector((state: RootStateType) => state.comments);
 
   const dispatch = useDispatch();
-  const postId = parseInt(match.params.postId)
+  const postId = parseInt(match.params.postId);
   useEffect(() => {
     dispatch(getComments(postId));
-  }, [dispatch, match]);
+  }, [dispatch, postId]);
 
   return isLoading ? (
     <Spinner />
